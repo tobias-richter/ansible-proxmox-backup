@@ -1,0 +1,11 @@
+galaxy_info:
+  role_name: proxmox_backup
+  author: Tobias Richter
+  description: Ansible Role for setting up backup for proxmox virtual environment
+  license: Apache
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Debian
+      versions:
+        - buster

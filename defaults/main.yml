@@ -1,0 +1,16 @@
+proxmox_backup_script_url: https://raw.githubusercontent.com/DerDanilo/proxmox-stuff/3660e828a2014738a2a2736ae850c6edbae55592/prox_config_backup.sh
+proxmox_backup_script_path: /usr/local/sbin/prox_config_backup.sh
+proxmox_backup_wrapper_script_path: /usr/local/sbin/prox_config_backup_wrapper.sh
+proxmox_backup_dir: /mnt/backups/proxmox
+proxmox_backup_temp_dir: /var/tmp
+
+proxmox_backup_log_dir: /var/log/pve-backup
+proxmox_backup_log_file: "{{ proxmox_backup_log_dir }}/pve-backup.log"
+
+proxmox_backup_cron_configure: false
+# proxmox_backup_cron_minute
+# proxmox_backup_cron_hour
+# proxmox_backup_cron_day
+# proxmox_backup_cron_month
+# proxmox_backup_cron_weekday
+# proxmox_backup_cron_special_time

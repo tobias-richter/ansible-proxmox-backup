@@ -1,0 +1,49 @@
+- name: Install OS packages.
+  package:
+    name:
+      - moreutils
+      - tar
+
+- name: Ensure directories exist.
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ proxmox_backup_log_dir }}"
+    - "{{ proxmox_backup_dir }}"
+
+- name: Download backup script.
+  get_url:
+    url: "{{ proxmox_backup_script_url }}"
+    dest: "{{ proxmox_backup_script_path }}"
+    mode: 0744
+    owner: root
+    group: root
+    force: yes
+
+- name: Deactivate interactive mode.
+  lineinfile:
+    path: "{{ proxmox_backup_script_path }}"
+    line: description
+    state: absent
+
+- name: Deploy backup wrapper script.
+  template:
+    src: usr/local/sbin/prox_config_backup_wrapper.sh.j2
+    dest: "{{ proxmox_backup_wrapper_script_path }}"
+    mode: 0744
+    owner: root
+    group: root
+
+- name: Create backup cronjob.
+  cron:
+    name: proxmox backup
+    job: "/bin/bash {{ proxmox_backup_wrapper_script_path }} 2>&1 >> {{ proxmox_backup_log_file }}"
+    minute: "{{ proxmox_backup_cron_minute | default(omit) }}"
+    hour: "{{ proxmox_backup_cron_hour | default(omit) }}"
+    day: "{{ proxmox_backup_cron_day | default(omit) }}"
+    month: "{{ proxmox_backup_cron_month | default(omit) }}"
+    weekday: "{{ proxmox_backup_cron_weekday | default(omit) }}"
+    special_time: "{{ proxmox_backup_cron_special_time | default(omit) }}"
+    user: root
+  when: proxmox_backup_cron_configure
