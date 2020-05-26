@@ -9,3 +9,8 @@ galaxy_info:
     - name: GenericLinux
       versions:
         - any
+
+  galaxy_tags:
+    - proxmox
+    - pve
+    - backup
