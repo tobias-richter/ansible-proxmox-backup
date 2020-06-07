@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tobias-richter/ansible-proxmox-backup.svg?branch=master)](https://travis-ci.org/tobias-richter/ansible-proxmox-backup)
 
-This roles setups a backup for the proxmox configuration.
+This role setups a backup for the proxmox configuration.
 This role reuses the backup script `prox_config_backup.sh` from <https://github.com/DerDanilo/proxmox-stuff/> by 
 wrapping it and providing configurable values for `BACK_DIR` and `TMP_DIR`.
 
