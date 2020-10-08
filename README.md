@@ -43,12 +43,12 @@ Path for the backup log files and path to the logfile.
 
 Enables/Disables the task for managing the cronjob.
 
-    # proxmox_backup_cron_minute
-    # proxmox_backup_cron_hour
-    # proxmox_backup_cron_day
-    # proxmox_backup_cron_month
-    # proxmox_backup_cron_weekday
-    # proxmox_backup_cron_special_time
+    # proxmox_backup_cron_minute:
+    # proxmox_backup_cron_hour:
+    # proxmox_backup_cron_day:
+    # proxmox_backup_cron_month:
+    # proxmox_backup_cron_weekday:
+    # proxmox_backup_cron_special_time:
 
 Use the proxmox_backup_cron_.* vars to configure the execution times for the cronjob.
 
