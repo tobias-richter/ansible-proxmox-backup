@@ -21,9 +21,9 @@ proxmox_backup_log_file: "{{ proxmox_backup_log_dir }}/pve-backup.log"
 proxmox_backup_cron_configure: false
 
 # Enables/Disables the task for managing the cronjob.
-# proxmox_backup_cron_minute
-# proxmox_backup_cron_hour
-# proxmox_backup_cron_day
-# proxmox_backup_cron_month
-# proxmox_backup_cron_weekday
-# proxmox_backup_cron_special_time
+# proxmox_backup_cron_minute:
+# proxmox_backup_cron_hour:
+# proxmox_backup_cron_day:
+# proxmox_backup_cron_month:
+# proxmox_backup_cron_weekday:
+# proxmox_backup_cron_special_time:
