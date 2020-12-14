@@ -1,6 +1,6 @@
 # tobias_richter.proxmox_backup
 
-[![Build Status](https://travis-ci.org/tobias-richter/ansible-proxmox-backup.svg?branch=master)](https://travis-ci.org/tobias-richter/ansible-proxmox-backup)
+[![Build Status](https://github.com/tobias-richter/ansible-proxmox-backup/workflows/CI/badge.svg)](https://github.com/tobias-richter/ansible-proxmox-backup/actions)
 
 This role setups a backup for the proxmox configuration.
 This role reuses the backup script `prox_config_backup.sh` from <https://github.com/DerDanilo/proxmox-stuff/> by 
