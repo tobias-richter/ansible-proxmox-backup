@@ -4,4 +4,4 @@
 export BACK_DIR="{{ proxmox_backup_dir }}"
 export TMP_DIR="{{ proxmox_backup_temp_dir }}"
 
-{{ proxmox_backup_script_path }} | ts
+{{ proxmox_backup_script_path }} 2>&1 | ts
