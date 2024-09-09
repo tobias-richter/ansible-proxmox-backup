@@ -1,4 +1,4 @@
 - name: test role syntax
   hosts: test
   roles:
-    - proxmox_backup
+    - ansible-proxmox-backup
