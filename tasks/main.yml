@@ -1,43 +1,44 @@
 - name: Install OS packages.
-  package:
+  ansible.builtin.package:
     name:
       - moreutils
       - tar
 
 - name: Ensure directories exist.
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: 0750
+    mode: "0750"
   with_items:
     - "{{ proxmox_backup_log_dir }}"
     - "{{ proxmox_backup_dir }}"
 
 - name: Download backup script.
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ proxmox_backup_script_url }}"
     dest: "{{ proxmox_backup_script_path }}"
-    mode: 0744
+    mode: "0744"
     owner: root
     group: root
-    force: yes
+    force: true
 
 - name: Deactivate interactive mode.
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "{{ proxmox_backup_script_path }}"
     line: description
     state: absent
 
 - name: Deploy backup wrapper script.
-  template:
+  ansible.builtin.template:
     src: usr/local/sbin/prox_config_backup_wrapper.sh.j2
     dest: "{{ proxmox_backup_wrapper_script_path }}"
-    mode: 0744
+    mode: "0744"
     owner: root
     group: root
 
 - name: Create backup cronjob.
-  cron:
+  when: proxmox_backup_cron_configure
+  ansible.builtin.cron:
     name: proxmox backup
     job: "/bin/bash {{ proxmox_backup_wrapper_script_path }} >> {{ proxmox_backup_log_file }}"
     minute: "{{ proxmox_backup_cron_minute | default(omit) }}"
@@ -47,4 +48,3 @@
     weekday: "{{ proxmox_backup_cron_weekday | default(omit) }}"
     special_time: "{{ proxmox_backup_cron_special_time | default(omit) }}"
     user: root
-  when: proxmox_backup_cron_configure

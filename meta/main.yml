@@ -1,14 +1,15 @@
 galaxy_info:
   role_name: proxmox_backup
+  namespace: tobias_richter
   author: Tobias Richter
   description: Ansible Role for setting up backup for proxmox virtual environment
   license: Apache
-  min_ansible_version: 2.7
+  min_ansible_version: "2.7"
 
   platforms:
     - name: GenericLinux
       versions:
-        - any
+        - all
 
   galaxy_tags:
     - proxmox
