@@ -8,7 +8,7 @@ proxmox_backup_script_path: /usr/local/sbin/prox_config_backup.sh
 proxmox_backup_wrapper_script_path: /usr/local/sbin/prox_config_backup_wrapper.sh
 
 # The destination directory for the backups
-proxmox_backup_dir: /mnt/backups/proxmox
+proxmox_backup_dir: /
 
 # Temp dir used during backup creation
 proxmox_backup_temp_dir: /var/tmp
@@ -19,6 +19,36 @@ proxmox_backup_log_file: "{{ proxmox_backup_log_dir }}/pve-backup.log"
 
 # Enables/Disable the backup cronjob
 proxmox_backup_cron_configure: false
+
+proxmox_backup_client_pxarexclude:
+  - path: /
+    patterns:
+      - "/*"
+      - "/etc/*"
+      - "!etc"
+      - "!etc/pve"
+      - "!etc/pve/**"
+
+      - "/var/*"
+      - "/var/lib/*"
+      - "/var/spool/*"
+
+      - "!var"
+      - "!var/lib"
+      - "!var/lib/pve-cluster"
+      - "!var/lib/pve-cluster/**"
+
+      - "!/root/"
+
+      - "!var"
+      - "!var/spool"
+      - "!var/spool/cron"
+
+      - "/usr/*"
+      - "/usr/share/*"
+      - "!/usr/share/kvm/*.vbios"
+
+# proxmox_backup_server_default_repository:
 
 # Enables/Disables the task for managing the cronjob.
 # proxmox_backup_cron_minute:

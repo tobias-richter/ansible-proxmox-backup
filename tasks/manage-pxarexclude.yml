@@ -1,0 +1,16 @@
+- name: "Add list."
+  ansible.builtin.template:
+    src: pxarexclude.j2
+    dest: "{{ item.path }}/.pxarexclude"
+    owner: root
+    group: root
+    mode: 0770
+  with_items: "{{ proxmox_backup_client_pxarexclude }}"
+  when: item.state | default('present') == 'present'
+
+- name: "Remove list."
+  ansible.builtin.file:
+    path: "{{ item.path }}/.pxarexclude"
+    state: absent
+  with_items: "{{ proxmox_backup_client_pxarexclude }}"
+  when: item.state | default('present') == 'absent'

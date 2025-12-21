@@ -1,7 +1,6 @@
 #!/bin/bash
 # {{ ansible_managed }}
 
-export BACK_DIR="{{ proxmox_backup_dir }}"
-export TMP_DIR="{{ proxmox_backup_temp_dir }}"
-
-{{ proxmox_backup_script_path }} 2>&1 | ts
+{% if proxmox_backup_server_repository is defined %}
+proxmox-backup-client backup pve-backup.pxar:{{ proxmox_backup_dir }} {{ proxmox_backup_server_client_additional_args | default('') }}
+{% endif %}
