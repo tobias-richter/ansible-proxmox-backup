@@ -1,14 +1,5 @@
-# URL to retrive the backup script from
-proxmox_backup_script_url: https://raw.githubusercontent.com/DerDanilo/proxmox-stuff/2bfca04a444bc2cf239dbc4af67d2bdfbdcacf6e/prox_config_backup.sh
-
-# Path of the backup script on the proxmox instance
-proxmox_backup_script_path: /usr/local/sbin/prox_config_backup.sh
-
 # Path of the wrapper script that configures the real backup script
 proxmox_backup_wrapper_script_path: /usr/local/sbin/prox_config_backup_wrapper.sh
-
-# The destination directory for the backups
-proxmox_backup_dir: /
 
 # Temp dir used during backup creation
 proxmox_backup_temp_dir: /var/tmp
