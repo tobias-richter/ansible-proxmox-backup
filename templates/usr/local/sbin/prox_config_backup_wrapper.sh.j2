@@ -2,5 +2,11 @@
 # {{ ansible_managed }}
 
 {% if proxmox_backup_server_repository is defined %}
-proxmox-backup-client backup pve-backup.pxar:{{ proxmox_backup_dir }} {{ proxmox_backup_server_client_additional_args | default('') }}
+
+export PBS_REPOSITORY="{{ proxmox_backup_server_repository | default('') }}"
+{% if proxmox_backup_server_password is defined %}
+export PBS_PASSWORD="{{ proxmox_backup_server_password }}"
+{% endif %}
+
+proxmox-backup-client backup pve-backup.pxar:/ {{ proxmox_backup_server_client_additional_args | default('') }}
 {% endif %}
