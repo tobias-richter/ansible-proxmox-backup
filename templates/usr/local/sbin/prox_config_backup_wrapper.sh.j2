@@ -8,5 +8,5 @@ export PBS_REPOSITORY="{{ proxmox_backup_server_repository | default('') }}"
 export PBS_PASSWORD="{{ proxmox_backup_server_password }}"
 {% endif %}
 
-proxmox-backup-client backup pve-backup.pxar:/ {{ proxmox_backup_server_client_additional_args | default('') }}
+proxmox-backup-client backup pve-backup.pxar:/ {{ proxmox_backup_server_client_additional_args | default('') }} 2>&1 | ts
 {% endif %}
